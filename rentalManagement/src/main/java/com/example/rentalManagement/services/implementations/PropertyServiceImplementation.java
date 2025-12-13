@@ -6,8 +6,10 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 import com.example.rentalManagement.dtos.PropertyDto;
+import com.example.rentalManagement.dtos.PropertyRequestDto;
 import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.mappers.PropertyMapper;
+import com.example.rentalManagement.mappers.PropertyRequestMapper;
 import com.example.rentalManagement.repositories.PropertyRepository;
 import com.example.rentalManagement.repositories.UserRepository;
 import com.example.rentalManagement.services.PropertyService;
@@ -25,9 +27,10 @@ public class PropertyServiceImplementation implements PropertyService {
 	}
 	
 	@Override
-	public PropertyDto addProperty(PropertyDto propertyDto) {
+	public PropertyDto addProperty(PropertyRequestDto propertyRequest) {
 		// TODO Auto-generated method stub
-		Property property = PropertyMapper.toEntity(propertyDto);
+		Property property = PropertyRequestMapper.toEntity(propertyRequest);
+	
 		Property savedProperty = this.propertyRepository.save(property);
 		
 		return PropertyMapper.toDto(savedProperty);
@@ -37,6 +40,7 @@ public class PropertyServiceImplementation implements PropertyService {
 	public List<PropertyDto> getPropertiesByOwnerId(Long id) {
 		// TODO Auto-generated method stub
 		List<Property> properties = this.propertyRepository.findByOwnerUserId(id);
+		
 		List<PropertyDto> propertyDtos = properties.stream()
 				.map(PropertyMapper::toDto)
 				.collect(Collectors.toList());
@@ -56,6 +60,7 @@ public class PropertyServiceImplementation implements PropertyService {
 				new RuntimeException("Owner does not exist")
 		));
 		
+		System.out.println("Updated : "+property.getOwner());
 		Property savedProperty = this.propertyRepository.save(property);
 		return PropertyMapper.toDto(savedProperty);
 	}

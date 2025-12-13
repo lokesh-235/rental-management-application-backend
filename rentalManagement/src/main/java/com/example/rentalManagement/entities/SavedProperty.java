@@ -15,7 +15,7 @@ public class SavedProperty {
     @ManyToOne
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Property property;
 
     private LocalDateTime savedAt;

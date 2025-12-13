@@ -15,7 +15,7 @@ public class ActiveRental {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long rentalId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "property_property_id")
     private Property property;
 

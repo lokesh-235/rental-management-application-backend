@@ -12,7 +12,7 @@ public class TenantRequest {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long requestId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Property property;
 
     @ManyToOne

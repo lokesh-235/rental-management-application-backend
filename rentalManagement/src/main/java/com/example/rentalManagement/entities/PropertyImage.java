@@ -11,7 +11,7 @@ public class PropertyImage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long imageId;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "property_id")
     private Property property;
 

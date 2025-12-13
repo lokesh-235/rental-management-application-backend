@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.rentalManagement.dtos.PropertyDto;
+import com.example.rentalManagement.dtos.PropertyRequestDto;
 import com.example.rentalManagement.services.PropertyService;
 
 @RestController
@@ -28,8 +29,8 @@ public class PropertyController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PropertyDto> addProperty(@RequestBody PropertyDto propertyDto){
-		PropertyDto savedPropertyDto = this.propertyService.addProperty(propertyDto);
+	public ResponseEntity<PropertyDto> addProperty(@RequestBody PropertyRequestDto propertyRequest){
+		PropertyDto savedPropertyDto = this.propertyService.addProperty(propertyRequest);
 		return ResponseEntity.ok(savedPropertyDto);
 		
 	}

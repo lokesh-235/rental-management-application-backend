@@ -5,9 +5,10 @@ import java.util.List;
 import org.jspecify.annotations.Nullable;
 
 import com.example.rentalManagement.dtos.PropertyDto;
+import com.example.rentalManagement.dtos.PropertyRequestDto;
 
 public interface PropertyService {
-	PropertyDto addProperty(PropertyDto property) ;
+	PropertyDto addProperty(PropertyRequestDto propertyRequest) ;
 	 
 	List<PropertyDto> getPropertiesByOwnerId(Long id);
 	 

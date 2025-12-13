@@ -11,7 +11,7 @@ public class PropertyMapper {
 
         PropertyDto dto = new PropertyDto();
         dto.setPropertyId(property.getPropertyId());
-        dto.setOwnerId(property.getOwner().getUserId());
+//        dto.setOwnerId(property.getOwner().getUserId());
         dto.setTitle(property.getTitle());
         dto.setDescription(property.getDescription());
         dto.setAddress(property.getAddress());
