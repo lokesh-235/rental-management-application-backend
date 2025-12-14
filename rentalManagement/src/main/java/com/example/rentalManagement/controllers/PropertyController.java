@@ -29,9 +29,9 @@ public class PropertyController {
 	}
 	
 	@PostMapping
-	public ResponseEntity<PropertyDto> addProperty(@RequestBody PropertyRequestDto propertyRequest){
-		PropertyDto savedPropertyDto = this.propertyService.addProperty(propertyRequest);
-		return ResponseEntity.ok(savedPropertyDto);
+	public ResponseEntity<PropertyDto> addProperty(@RequestBody PropertyDto propertyDto){
+		
+		return ResponseEntity.ok(this.propertyService.addProperty(propertyDto));
 		
 	}
 	

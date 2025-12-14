@@ -4,6 +4,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 public class PropertyImageRequestDto {
 	private Long propertyId;
+	
 	private MultipartFile file;
 	public Long getPropertyId() {
 		return propertyId;

@@ -18,6 +18,7 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 	
 	private TenantRequestRepository tenantRequestRepository;
 	
+	
 	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository) {
 		this.tenantRequestRepository = tenantRequestRepository;
 	}

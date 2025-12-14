@@ -31,4 +31,13 @@ public class ActiveRentalImplementation implements ActiveRentalService{
 		
 		return activeRentalDtos;
 	}
+
+	@Override
+	public ActiveRentalDto addActiveRental(ActiveRentalDto activeRentalDto) {
+		// TODO Auto-generated method stub
+		ActiveRental activeRental = ActiveRentalMapper.toEntity(activeRentalDto);
+		ActiveRental savedActiveRental = this.activeRentalRepository.save(activeRental);
+		
+		return ActiveRentalMapper.toDto(savedActiveRental);
+	}
 }

@@ -10,7 +10,8 @@ public class TenantRequestMapper {
 
         TenantRequestDto dto = new TenantRequestDto();
         dto.setRequestId(req.getRequestId());
-        dto.setProperty(PropertyMapper.toDto(req.getProperty()));
+        
+        dto.setProperty(PropertyMapper.toDto(req.getProperty(),null));
         dto.setTenantId(req.getTenant().getUserId());
         dto.setMessage(req.getMessage());
         dto.setStatus(req.getStatus());
@@ -21,7 +22,7 @@ public class TenantRequestMapper {
         if (dto == null) return null;
 
         TenantRequest req = new TenantRequest();
-        req.setRequestId(dto.getRequestId());
+//        req.setRequestId(dto.getRequestId());
         req.setMessage(dto.getMessage());
         req.setStatus(dto.getStatus());
         return req;

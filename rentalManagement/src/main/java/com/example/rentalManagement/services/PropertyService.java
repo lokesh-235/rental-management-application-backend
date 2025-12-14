@@ -8,7 +8,7 @@ import com.example.rentalManagement.dtos.PropertyDto;
 import com.example.rentalManagement.dtos.PropertyRequestDto;
 
 public interface PropertyService {
-	PropertyDto addProperty(PropertyRequestDto propertyRequest) ;
+	PropertyDto addProperty(PropertyDto propertyDto) ;
 	 
 	List<PropertyDto> getPropertiesByOwnerId(Long id);
 	 

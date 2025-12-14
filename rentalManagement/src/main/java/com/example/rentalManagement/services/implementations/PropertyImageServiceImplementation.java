@@ -6,6 +6,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
@@ -33,8 +34,6 @@ public class PropertyImageServiceImplementation implements PropertyImageService{
 		this.propertyImageRepository = propertyImageRepository;
 		this.propertyRepository = propertyRepository;
 	}
-	
-	
 	
 	@Override
 	public PropertyImageDto uploadImage(MultipartFile file,Long propertyId) throws IOException {
@@ -72,6 +71,20 @@ public class PropertyImageServiceImplementation implements PropertyImageService{
 		return PropertyImageMapper.toDto(savedPropertyImage);
 		
 		
+	}
+
+	@Override
+	public List<PropertyImageDto> getImagesOfProperty(Long propertyId) {
+		// TODO Auto-generated method stub
+		List<PropertyImage> propertyImages = this.propertyImageRepository
+				.findByPropertyPropertyId(propertyId)
+				.orElseThrow(() ->
+				new RuntimeException("images does not exist"));
+		
+		List<PropertyImageDto> propertyImageDtos = propertyImages.stream()
+				.map(PropertyImageMapper::toDto)
+				.toList();
+		return propertyImageDtos;
 	}
 
 }

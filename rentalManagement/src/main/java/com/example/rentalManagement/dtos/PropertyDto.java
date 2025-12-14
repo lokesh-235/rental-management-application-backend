@@ -15,7 +15,8 @@ public class PropertyDto {
     private Double rentAmount;
     private Double depositAmount;
     private String propertyType;
-    private List<String> images;  // list of image URLs
+    private List<PropertyImageDto> images;  // list of image URLs
+    
 	public Long getPropertyId() {
 		return propertyId;
 	}
@@ -76,10 +77,10 @@ public class PropertyDto {
 	public void setPropertyType(String propertyType) {
 		this.propertyType = propertyType;
 	}
-	public List<String> getImages() {
+	public List<PropertyImageDto> getImages() {
 		return images;
 	}
-	public void setImages(List<String> images) {
+	public void setImages(List<PropertyImageDto> images) {
 		this.images = images;
 	}
     

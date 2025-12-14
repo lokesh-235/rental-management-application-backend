@@ -5,11 +5,10 @@ import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.entities.User;
 
 public class PropertyRequestMapper {
-	public static Property toEntity(PropertyRequestDto dto) {
+	public static Property toEntity(PropertyRequestDto dto,User owner) {
 		Property property = new Property();
 		
-		User owner = new User();
-		owner.setUserId(dto.getOwnerId());
+		
 		property.setOwner(owner);
 		
 		property.setAddress(dto.getAddress());
