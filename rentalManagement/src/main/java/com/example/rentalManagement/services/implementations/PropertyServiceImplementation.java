@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.example.rentalManagement.dtos.PropertyDto;
 import com.example.rentalManagement.dtos.PropertyImageDto;
 import com.example.rentalManagement.dtos.PropertyRequestDto;
+import com.example.rentalManagement.dtos.SearchPropertiesRequestDto;
 import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.entities.PropertyImage;
 import com.example.rentalManagement.entities.User;
@@ -103,6 +104,27 @@ public class PropertyServiceImplementation implements PropertyService {
 		// TODO Auto-generated method stub
 		this.propertyRepository.deleteById(propertyId);
 		return null;
+	}
+
+	@Override
+	public List<PropertyDto> searchProperties(SearchPropertiesRequestDto searchPropertiesRequestDto) {
+		// TODO Auto-generated method stub
+		String location = searchPropertiesRequestDto.getLocation();
+		String propertyType = searchPropertiesRequestDto.getPropertyType();
+		String city = searchPropertiesRequestDto.getCity();
+		String state = searchPropertiesRequestDto.getState();
+		Double maxRentAmount = searchPropertiesRequestDto.getMaxRentAmount();
+		List<Property> properties = this.propertyRepository.findByAddressContainingAndCityContainingAndStateContainingAndPropertyTypeAndRentAmountLessThan(location,city,state,propertyType,maxRentAmount);
+		
+		List<PropertyDto> propertyDtos = properties.stream()
+				.map((Property property)-> 
+				PropertyMapper.toDto(property
+						, this.propertyImageService.getImagesOfProperty(property.getPropertyId())))
+				.collect(Collectors.toList());
+		
+		System.out.println(propertyDtos);
+		System.out.println("getting propertis ...");
+		return propertyDtos;
 	}
 	
 }

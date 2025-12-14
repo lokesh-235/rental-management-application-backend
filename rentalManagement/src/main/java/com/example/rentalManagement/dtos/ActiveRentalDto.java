@@ -2,6 +2,8 @@ package com.example.rentalManagement.dtos;
 
 import java.time.LocalDate;
 
+import com.example.rentalManagement.entities.ActiveRental.Status;
+
 public class ActiveRentalDto {
     private Long rentalId;
     private Long propertyId;
@@ -9,7 +11,7 @@ public class ActiveRentalDto {
     private LocalDate startDate;
     private LocalDate endDate;
     private Double monthlyRent;
-    private String status;
+    private Status status;
 	public Long getRentalId() {
 		return rentalId;
 	}
@@ -46,10 +48,10 @@ public class ActiveRentalDto {
 	public void setMonthlyRent(Double monthlyRent) {
 		this.monthlyRent = monthlyRent;
 	}
-	public String getStatus() {
+	public Status getStatus() {
 		return status;
 	}
-	public void setStatus(String status) {
+	public void setStatus(Status status) {
 		this.status = status;
 	}
     

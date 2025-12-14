@@ -6,10 +6,14 @@ import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
+import com.example.rentalManagement.dtos.ActiveRentalDto;
 import com.example.rentalManagement.dtos.TenantRequestDto;
+import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.entities.TenantRequest;
 import com.example.rentalManagement.entities.TenantRequest.Status;
 import com.example.rentalManagement.mappers.TenantRequestMapper;
+import com.example.rentalManagement.mappers.TenantRequestToActiveRentalMapper;
+import com.example.rentalManagement.repositories.PropertyRepository;
 import com.example.rentalManagement.repositories.TenantRequestRepository;
 import com.example.rentalManagement.services.TenantRequestService;
 
@@ -17,10 +21,12 @@ import com.example.rentalManagement.services.TenantRequestService;
 public class TenantRequestServiceImplementation implements TenantRequestService{
 	
 	private TenantRequestRepository tenantRequestRepository;
-	
-	
-	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository) {
+	private PropertyRepository propertyRepository;
+	private ActiveRentalImplementation activeRentalImplementation;
+	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository,PropertyRepository propertyRepository,ActiveRentalImplementation activeRentalImplementation) {
 		this.tenantRequestRepository = tenantRequestRepository;
+		this.propertyRepository = propertyRepository;
+		this.activeRentalImplementation = activeRentalImplementation;
 	}
 	
 	@Override
@@ -44,7 +50,15 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		
 		request.setStatus(Status.APPROVED);
 		
+		//add to active rentals
+		Property property = this.propertyRepository
+				         .findById(request.getProperty()
+						.getPropertyId())
+				        .orElseThrow(()->
+				        new RuntimeException("Property does not exist"));
 		
+		ActiveRentalDto activeRentalDto = TenantRequestToActiveRentalMapper.toActiveRentalDto(request, property.getRentAmount());
+		activeRentalImplementation.addActiveRental(activeRentalDto);
 		
 		this.tenantRequestRepository.save(request);
 		

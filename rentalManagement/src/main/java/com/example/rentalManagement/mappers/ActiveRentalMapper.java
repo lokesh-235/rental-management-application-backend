@@ -17,7 +17,7 @@ public class ActiveRentalMapper {
         dto.setStartDate(rental.getStartDate());
         dto.setEndDate(rental.getEndDate());
         dto.setMonthlyRent(rental.getMonthlyRent());
-        dto.setStatus(rental.getStatus().name());
+        dto.setStatus(rental.getStatus());
         return dto;
     }
 
@@ -39,7 +39,7 @@ public class ActiveRentalMapper {
         rental.setEndDate(dto.getEndDate());
         rental.setMonthlyRent(dto.getMonthlyRent());
 
-        rental.setStatus(ActiveRental.Status.valueOf(dto.getStatus()));
+        rental.setStatus(dto.getStatus());
         return rental;
     }
 }

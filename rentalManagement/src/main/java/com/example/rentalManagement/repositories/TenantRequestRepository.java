@@ -15,6 +15,8 @@ public interface TenantRequestRepository extends JpaRepository<TenantRequest, Lo
     List<TenantRequest> findByStatus(TenantRequest.Status status);
     
     List<TenantRequest> findByPropertyOwnerUserId(Long id);
+    
+    Double findRentAmountByPropertyPropertyId(Long propertyId);
 
 }
 

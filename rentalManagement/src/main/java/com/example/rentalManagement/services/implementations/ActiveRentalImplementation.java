@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.example.rentalManagement.dtos.ActiveRentalDto;
 import com.example.rentalManagement.entities.ActiveRental;
+import com.example.rentalManagement.entities.ActiveRental.Status;
 import com.example.rentalManagement.mappers.ActiveRentalMapper;
 import com.example.rentalManagement.repositories.ActiveRentalRepository;
 import com.example.rentalManagement.services.ActiveRentalService;
@@ -36,8 +37,21 @@ public class ActiveRentalImplementation implements ActiveRentalService{
 	public ActiveRentalDto addActiveRental(ActiveRentalDto activeRentalDto) {
 		// TODO Auto-generated method stub
 		ActiveRental activeRental = ActiveRentalMapper.toEntity(activeRentalDto);
+		activeRental.setStatus(Status.ACTIVE);
 		ActiveRental savedActiveRental = this.activeRentalRepository.save(activeRental);
 		
 		return ActiveRentalMapper.toDto(savedActiveRental);
+	}
+
+	@Override
+	public List<ActiveRentalDto> getActiveRentalsByTenantId(Long tenantId) {
+		// TODO Auto-generated method stub
+		List<ActiveRental> activeRentals = this.activeRentalRepository.findByTenantUserId(tenantId);
+		System.out.println(activeRentals);
+		List<ActiveRentalDto> activeRentalDtos = activeRentals.stream()
+				.map(ActiveRentalMapper::toDto)
+				.collect(Collectors.toList());
+		
+		return activeRentalDtos;
 	}
 }

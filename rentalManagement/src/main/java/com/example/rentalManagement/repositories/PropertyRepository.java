@@ -14,6 +14,8 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
 
     List<Property> findByAddressContaining(String keyword);
     
+    Double findRentAmountByPropertyId(Long propertyId);
     
+    List<Property> findByAddressContainingAndCityContainingAndStateContainingAndPropertyTypeAndRentAmountLessThan(String location,String city,String state,String propertyType,Double rentAmount);
 }
 

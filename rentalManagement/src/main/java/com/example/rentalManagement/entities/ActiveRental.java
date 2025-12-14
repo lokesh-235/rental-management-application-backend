@@ -29,7 +29,7 @@ public class ActiveRental {
     private Double monthlyRent;
 
     @Enumerated(EnumType.STRING)
-    private Status status;
+    private Status status=Status.ACTIVE;
 
     public enum Status {
         ACTIVE, COMPLETED, CANCELLED
