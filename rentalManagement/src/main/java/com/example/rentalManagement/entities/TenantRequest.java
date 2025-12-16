@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "tenant_requests")
 public class TenantRequest {
@@ -22,7 +24,8 @@ public class TenantRequest {
 
     @Enumerated(EnumType.STRING)
     private Status status = Status.PENDING;
-
+    
+    @CreationTimestamp
     private LocalDateTime requestedAt;
 
     public enum Status {

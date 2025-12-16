@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.rentalManagement.dtos.PropertyDto;
 import com.example.rentalManagement.dtos.PropertyRequestDto;
+import com.example.rentalManagement.dtos.UserDto;
 import com.example.rentalManagement.services.PropertyService;
 
 @RestController
 @RequestMapping("/api/properties")
-@CrossOrigin("http://localhost:5173")
 public class PropertyController {
 	private PropertyService propertyService;
 	
@@ -36,8 +36,8 @@ public class PropertyController {
 	}
 	
 	@GetMapping
-	public ResponseEntity<List<PropertyDto>> getAllProperties(){
-		return ResponseEntity.ok(this.propertyService.getAllProperties());
+	public ResponseEntity<List<PropertyDto>> getAvailableProperties(){
+		return ResponseEntity.ok(this.propertyService.getAvailableProperties());
 	}
 	
 	@PutMapping("/{propertyId}")
@@ -53,9 +53,14 @@ public class PropertyController {
 		return ResponseEntity.ok("deleted successfully");
 	}
 	
-	@GetMapping("/owner/{id}")
-	public ResponseEntity<List<PropertyDto>> getPropertiesById(@PathVariable Long id){
+	@GetMapping("/owner/{ownerId}")
+	public ResponseEntity<List<PropertyDto>> getPropertiesByOwnerId(@PathVariable Long ownerId){
 		
-		return ResponseEntity.ok(this.propertyService.getPropertiesByOwnerId(id));
+		return ResponseEntity.ok(this.propertyService.getPropertiesByOwnerId(ownerId));
+	}
+	
+	@GetMapping("/property/owner/{propertyId}")
+	public ResponseEntity<UserDto> getOwnerDetailsByPropertyId(@PathVariable Long propertyId){
+		return ResponseEntity.ok(this.propertyService.getOwnerDetailsByPropertyId(propertyId));
 	}
 }

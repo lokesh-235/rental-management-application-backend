@@ -9,11 +9,13 @@ import com.example.rentalManagement.dtos.PropertyDto;
 import com.example.rentalManagement.dtos.PropertyImageDto;
 import com.example.rentalManagement.dtos.PropertyRequestDto;
 import com.example.rentalManagement.dtos.SearchPropertiesRequestDto;
+import com.example.rentalManagement.dtos.UserDto;
 import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.entities.PropertyImage;
 import com.example.rentalManagement.entities.User;
 import com.example.rentalManagement.mappers.PropertyMapper;
 import com.example.rentalManagement.mappers.PropertyRequestMapper;
+import com.example.rentalManagement.mappers.UserMapper;
 import com.example.rentalManagement.repositories.PropertyImageRepository;
 import com.example.rentalManagement.repositories.PropertyRepository;
 import com.example.rentalManagement.repositories.UserRepository;
@@ -84,9 +86,9 @@ public class PropertyServiceImplementation implements PropertyService {
 	}
 
 	@Override
-	public List<PropertyDto> getAllProperties() {
+	public List<PropertyDto> getAvailableProperties() {
 		// TODO Auto-generated method stub
-		List<Property> properties = this.propertyRepository.findAll();
+		List<Property> properties = this.propertyRepository.findAvailableProperties();
 		
 		List<PropertyDto> propertyDtos = properties.stream()
 				.map((Property property)-> 
@@ -125,6 +127,14 @@ public class PropertyServiceImplementation implements PropertyService {
 		System.out.println(propertyDtos);
 		System.out.println("getting propertis ...");
 		return propertyDtos;
+	}
+
+	@Override
+	public UserDto getOwnerDetailsByPropertyId(Long propertyId) {
+		// TODO Auto-generated method stub
+		User owner = this.propertyRepository.findOwnerByPropertyId(propertyId);
+		System.out.println(propertyId);
+		return UserMapper.toDto(owner);
 	}
 	
 }

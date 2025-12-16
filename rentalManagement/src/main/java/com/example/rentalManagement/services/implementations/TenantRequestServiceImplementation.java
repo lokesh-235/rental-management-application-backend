@@ -8,13 +8,18 @@ import org.springframework.stereotype.Service;
 
 import com.example.rentalManagement.dtos.ActiveRentalDto;
 import com.example.rentalManagement.dtos.TenantRequestDto;
+import com.example.rentalManagement.dtos.TenantRequestRequestDto;
 import com.example.rentalManagement.entities.Property;
 import com.example.rentalManagement.entities.TenantRequest;
 import com.example.rentalManagement.entities.TenantRequest.Status;
+import com.example.rentalManagement.entities.User;
 import com.example.rentalManagement.mappers.TenantRequestMapper;
+import com.example.rentalManagement.mappers.TenantRequestRequestDtoToTenantRequest;
 import com.example.rentalManagement.mappers.TenantRequestToActiveRentalMapper;
 import com.example.rentalManagement.repositories.PropertyRepository;
 import com.example.rentalManagement.repositories.TenantRequestRepository;
+import com.example.rentalManagement.repositories.UserRepository;
+import com.example.rentalManagement.services.TenantApprovalService;
 import com.example.rentalManagement.services.TenantRequestService;
 
 @Service
@@ -22,11 +27,16 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 	
 	private TenantRequestRepository tenantRequestRepository;
 	private PropertyRepository propertyRepository;
+	private UserRepository userRepository;
+	private TenantApprovalService tenantApprovalService;
+	
 	private ActiveRentalImplementation activeRentalImplementation;
-	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository,PropertyRepository propertyRepository,ActiveRentalImplementation activeRentalImplementation) {
+	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository,PropertyRepository propertyRepository,ActiveRentalImplementation activeRentalImplementation,UserRepository userRepository,TenantApprovalService tenantApprovalService) {
 		this.tenantRequestRepository = tenantRequestRepository;
 		this.propertyRepository = propertyRepository;
 		this.activeRentalImplementation = activeRentalImplementation;
+		this.userRepository = userRepository;
+		this.tenantApprovalService = tenantApprovalService;
 	}
 	
 	@Override
@@ -62,6 +72,8 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		
 		this.tenantRequestRepository.save(request);
 		
+		this.tenantApprovalService.approveTenantRequest(requestId);
+		
 	}
 
 	@Override
@@ -75,6 +87,28 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		request.setStatus(Status.REJECTED);
 		
 		this.tenantRequestRepository.save(request);
+	}
+
+	@Override
+	public TenantRequestDto addRequest(TenantRequestRequestDto tenantRequestRequestDto) {
+		// TODO Auto-generated method stub
+		Long propertyId = tenantRequestRequestDto.getPropertyId();
+		Long tenantId = tenantRequestRequestDto.getTenantId();
+		String message = tenantRequestRequestDto.getMessage();
+		
+		Property property = this.propertyRepository.findById(propertyId)
+				.orElseThrow(()->
+				new RuntimeException("property does not exist"));
+		
+		User tenant = this.userRepository.findById(tenantId)
+				.orElseThrow(()->
+				new RuntimeException("tenant does not exist"));
+		
+		TenantRequest tenantRequest = TenantRequestRequestDtoToTenantRequest.toTenantRequest(message, property, tenant);
+		
+		TenantRequest savedTenantRequest = this.tenantRequestRepository.save(tenantRequest);
+		
+		return TenantRequestMapper.toDto(savedTenantRequest);
 	}
 	
 	

@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "reviews")
 public class Review {
@@ -21,7 +23,8 @@ public class Review {
     private Integer rating;
 
     private String reviewText;
-
+    
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
 	public Long getReviewId() {

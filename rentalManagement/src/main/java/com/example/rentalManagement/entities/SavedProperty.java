@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "saved_properties")
 public class SavedProperty {
@@ -17,7 +19,8 @@ public class SavedProperty {
 
     @ManyToOne
     private Property property;
-
+    
+    @CreationTimestamp
     private LocalDateTime savedAt;
 
 	public Long getId() {

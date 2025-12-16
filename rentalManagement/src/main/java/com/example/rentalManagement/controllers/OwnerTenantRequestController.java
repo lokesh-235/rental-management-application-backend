@@ -15,12 +15,11 @@ import com.example.rentalManagement.services.TenantRequestService;
 
 @RestController
 @RequestMapping("/api/properties/owner")
-@CrossOrigin("http://localhost:5173")
-public class TenantRequestController {
+public class OwnerTenantRequestController {
 	
 	TenantRequestService tenantRequestService;
 	
-	public TenantRequestController(TenantRequestService tenantRequestService) {
+	public OwnerTenantRequestController(TenantRequestService tenantRequestService) {
 		this.tenantRequestService = tenantRequestService;
 	}
 	

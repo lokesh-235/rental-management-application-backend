@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "payments")
 public class Payment {
@@ -17,7 +19,8 @@ public class Payment {
     private ActiveRental rental;
 
     private Double amount;
-
+    
+    @CreationTimestamp
     private LocalDateTime paymentDate;
 
     private String paymentMethod; // UPI, CASH, CARD, etc.

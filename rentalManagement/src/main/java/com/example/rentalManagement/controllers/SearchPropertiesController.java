@@ -15,7 +15,6 @@ import com.example.rentalManagement.services.PropertyService;
 
 @RequestMapping("/api/properties")
 @RestController
-@CrossOrigin("http://localhost:5173")
 public class SearchPropertiesController {
 	private PropertyService propertyService;
 	

@@ -14,7 +14,6 @@ import com.example.rentalManagement.services.ActiveRentalService;
 
 @RestController
 @RequestMapping("/api/properties/owner/active-rentals")
-@CrossOrigin("http://localhost:5173")
 public class ActiveRentalController {
 	
 	private ActiveRentalService activeRentalService;
