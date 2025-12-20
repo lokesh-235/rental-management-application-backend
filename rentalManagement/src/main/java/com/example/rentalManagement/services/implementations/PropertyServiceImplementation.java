@@ -21,6 +21,7 @@ import com.example.rentalManagement.repositories.PropertyRepository;
 import com.example.rentalManagement.repositories.UserRepository;
 import com.example.rentalManagement.services.PropertyImageService;
 import com.example.rentalManagement.services.PropertyService;
+import com.example.rentalManagement.services.publishers.PropertyEventPublisher;
 
 @Service
 public class PropertyServiceImplementation implements PropertyService {
@@ -28,11 +29,13 @@ public class PropertyServiceImplementation implements PropertyService {
 	private PropertyRepository propertyRepository;
 	private UserRepository userRepository;
 	private PropertyImageService propertyImageService;
-
-	public PropertyServiceImplementation(PropertyRepository propertyRepository,UserRepository userRepository,PropertyImageService propertyImageService) {
+	private PropertyEventPublisher propertyEventPublisher;
+	
+	public PropertyServiceImplementation(PropertyRepository propertyRepository,UserRepository userRepository,PropertyImageService propertyImageService,PropertyEventPublisher propertyEventPublisher) {
 		this.propertyRepository = propertyRepository;
 		this.userRepository = userRepository;
 		this.propertyImageService = propertyImageService;
+		this.propertyEventPublisher = propertyEventPublisher;
 	}
 	
 	@Override
@@ -50,6 +53,10 @@ public class PropertyServiceImplementation implements PropertyService {
 		
 		System.out.println("Updated : "+property.getOwner());
 		Property savedProperty = this.propertyRepository.save(property);
+		
+		//notify available properties update at frontend
+		propertyEventPublisher.notifyAvailablePropertiesRefresh();
+		
 		return PropertyMapper.toDto(savedProperty,null);
 	}
 
@@ -82,6 +89,8 @@ public class PropertyServiceImplementation implements PropertyService {
 		
 		System.out.println("Updated : "+property.getOwner());
 		Property savedProperty = this.propertyRepository.save(property);
+		//notify available properties update at frontend
+		propertyEventPublisher.notifyAvailablePropertiesRefresh();
 		return PropertyMapper.toDto(savedProperty,this.propertyImageService.getImagesOfProperty(propertyId));
 	}
 
@@ -116,7 +125,7 @@ public class PropertyServiceImplementation implements PropertyService {
 		String city = searchPropertiesRequestDto.getCity();
 		String state = searchPropertiesRequestDto.getState();
 		Double maxRentAmount = searchPropertiesRequestDto.getMaxRentAmount();
-		List<Property> properties = this.propertyRepository.findByAddressContainingAndCityContainingAndStateContainingAndPropertyTypeAndRentAmountLessThan(location,city,state,propertyType,maxRentAmount);
+		List<Property> properties = this.propertyRepository.searchAvailableProperties(location,city,state,propertyType,maxRentAmount);
 		
 		List<PropertyDto> propertyDtos = properties.stream()
 				.map((Property property)-> 
@@ -135,6 +144,17 @@ public class PropertyServiceImplementation implements PropertyService {
 		User owner = this.propertyRepository.findOwnerByPropertyId(propertyId);
 		System.out.println(propertyId);
 		return UserMapper.toDto(owner);
+	}
+
+	@Override
+	public PropertyDto getPropertyByPropertyId(Long propertyId) {
+		// TODO Auto-generated method stub
+		Property property = this.propertyRepository.findById(propertyId).orElseThrow(()->new RuntimeException("Property does not exist..."));
+		
+		PropertyDto propertyDto = PropertyMapper.toDto(property, this.propertyImageService.getImagesOfProperty(propertyId));
+		
+		
+		return propertyDto;
 	}
 	
 }

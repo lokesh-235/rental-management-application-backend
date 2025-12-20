@@ -40,7 +40,21 @@ public class UserDto {
 	public void setRole(Role role) {
 		this.role = role;
 	}
-    
+	@Override
+	public boolean equals(Object o) {
+	    if (this == o) return true;
+	    if (o == null || getClass() != o.getClass()) return false;
+
+	    UserDto userDto = (UserDto) o;
+
+	    return userId != null && userId.equals(userDto.userId);
+	}
+
+	@Override
+	public int hashCode() {
+	    return userId != null ? userId.hashCode() : 0;
+	}
+
     
 }
 

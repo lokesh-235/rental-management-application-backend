@@ -12,12 +12,12 @@ import com.example.rentalManagement.dtos.ActiveRentalDto;
 import com.example.rentalManagement.services.ActiveRentalService;
 
 @RestController
-@RequestMapping("/api/properties/tenant/active-rentals")
-public class ActiveRentalTenantController {
+@RequestMapping("/api/tenant/active-rentals")
+public class TenantActiveRentalController {
 	
 	private ActiveRentalService activeRentalService;
 	
-	public ActiveRentalTenantController(ActiveRentalService activeRentalService) {
+	public TenantActiveRentalController(ActiveRentalService activeRentalService) {
 		this.activeRentalService = activeRentalService;
 	}
 	
@@ -25,4 +25,5 @@ public class ActiveRentalTenantController {
 	public ResponseEntity<List<ActiveRentalDto>> getActiveRentalsByTenantId(@PathVariable Long tenantId){
 		return ResponseEntity.ok(this.activeRentalService.getActiveRentalsByTenantId(tenantId));
 	}
+	
 }

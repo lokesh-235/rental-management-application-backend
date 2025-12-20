@@ -32,6 +32,26 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     @Query("SELECT p.owner FROM Property p WHERE p.propertyId = :propertyId")
     User findOwnerByPropertyId(@Param("propertyId") Long propertyId);
     
-    List<Property> findByAddressContainingAndCityContainingAndStateContainingAndPropertyTypeAndRentAmountLessThan(String location,String city,String state,String propertyType,Double rentAmount);
+    @Query("""
+    	    SELECT p FROM Property p
+    	    WHERE NOT EXISTS (
+    	        SELECT 1 FROM ActiveRental ar
+    	        WHERE ar.property.propertyId = p.propertyId
+    	        AND ar.status = 'ACTIVE'
+    	    )
+    	    AND (:location IS NULL OR LOWER(p.address) LIKE LOWER(CONCAT('%', :location, '%')))
+    	    AND (:city IS NULL OR LOWER(p.city) LIKE LOWER(CONCAT('%', :city, '%')))
+    	    AND (:state IS NULL OR LOWER(p.state) LIKE LOWER(CONCAT('%', :state, '%')))
+    	    AND (:propertyType IS NULL OR p.propertyType = :propertyType)
+    	    AND (:rentAmount IS NULL OR p.rentAmount <= :rentAmount)
+    	""")
+    	List<Property> searchAvailableProperties(
+    	        @Param("location") String location,
+    	        @Param("city") String city,
+    	        @Param("state") String state,
+    	        @Param("propertyType") String propertyType,
+    	        @Param("rentAmount") Double rentAmount
+    	);
+
 }
 

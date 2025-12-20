@@ -6,7 +6,7 @@ import com.example.rentalManagement.entities.ActiveRental.Status;
 
 public class ActiveRentalDto {
     private Long rentalId;
-    private Long propertyId;
+    private PropertyDto property;
     private Long tenantId;
     private LocalDate startDate;
     private LocalDate endDate;
@@ -18,11 +18,11 @@ public class ActiveRentalDto {
 	public void setRentalId(Long rentalId) {
 		this.rentalId = rentalId;
 	}
-	public Long getPropertyId() {
-		return propertyId;
+	public PropertyDto getProperty() {
+		return property;
 	}
-	public void setPropertyId(Long propertyId) {
-		this.propertyId = propertyId;
+	public void setProperty(PropertyDto property) {
+		this.property = property;
 	}
 	public Long getTenantId() {
 		return tenantId;

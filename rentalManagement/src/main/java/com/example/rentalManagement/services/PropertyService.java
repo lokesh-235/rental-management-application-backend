@@ -25,4 +25,6 @@ public interface PropertyService {
 
 	
 	UserDto getOwnerDetailsByPropertyId(Long propertyId);
+	
+	PropertyDto getPropertyByPropertyId(Long propertyId);
 }

@@ -1,4 +1,4 @@
-package com.example.rentalManagement.services;
+package com.example.rentalManagement.services.publishers;
 
 import org.springframework.messaging.simp.SimpMessagingTemplate;
 import org.springframework.stereotype.Service;

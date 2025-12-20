@@ -14,7 +14,7 @@ import com.example.rentalManagement.dtos.TenantRequestDto;
 import com.example.rentalManagement.services.TenantRequestService;
 
 @RestController
-@RequestMapping("/api/properties/owner")
+@RequestMapping("/api/owner")
 public class OwnerTenantRequestController {
 	
 	TenantRequestService tenantRequestService;

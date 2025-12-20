@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -25,6 +27,7 @@ public class User {
     @Enumerated(EnumType.STRING)
     private Role role;
     
+    @CreationTimestamp
     private LocalDateTime createdAt;
 
     public enum Role {
