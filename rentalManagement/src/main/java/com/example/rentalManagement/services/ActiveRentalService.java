@@ -13,4 +13,6 @@ public interface ActiveRentalService {
 	List<ActiveRentalTenantDto> getActiveRentals(Long ownerId);
 	
 	List<ActiveRentalDto> getActiveRentalsByTenantId(Long tenantId);
+	
+	ActiveRentalDto getActiveRentalByRentalId(Long rentalId);
 }

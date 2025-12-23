@@ -52,6 +52,8 @@ public interface PropertyRepository extends JpaRepository<Property, Long> {
     	        @Param("propertyType") String propertyType,
     	        @Param("rentAmount") Double rentAmount
     	);
+    
+    String findTitleByPropertyId(Long propertyId);
 
 }
 

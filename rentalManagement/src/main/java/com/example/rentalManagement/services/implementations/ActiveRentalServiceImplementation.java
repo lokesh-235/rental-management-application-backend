@@ -121,4 +121,15 @@ public class ActiveRentalServiceImplementation implements ActiveRentalService{
 	}
 	
 	
+	public ActiveRentalDto getActiveRentalByRentalId(Long rentalId) {
+		ActiveRental activeRental = this.activeRentalRepository.findById(rentalId).orElseThrow(()->new RuntimeException("rental does not exist"));
+		
+		UserDto tenant = this.userService.getUserByUserId(activeRental.getTenant().getUserId());
+		
+		PropertyDto property = this.propertyService.getPropertyByPropertyId(activeRental.getProperty().getPropertyId());
+		
+		return ActiveRentalMapper.toDto(activeRental,property,tenant); 
+		
+	}
+	
 }

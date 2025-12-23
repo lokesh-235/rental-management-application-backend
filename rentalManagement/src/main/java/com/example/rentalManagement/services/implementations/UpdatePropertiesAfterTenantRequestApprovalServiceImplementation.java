@@ -1,16 +1,15 @@
 package com.example.rentalManagement.services.implementations;
 
 import org.springframework.stereotype.Service;
-
-import com.example.rentalManagement.services.TenantRequestApprovalService;
+import com.example.rentalManagement.services.UpdatePropertiesAfterTenantRequestApprovalService;
 import com.example.rentalManagement.services.publishers.PropertyEventPublisher;
 
 @Service
-public class TenantRequestApprovalServiceImplementation implements TenantRequestApprovalService {
+public class UpdatePropertiesAfterTenantRequestApprovalServiceImplementation implements UpdatePropertiesAfterTenantRequestApprovalService {
 	
 	PropertyEventPublisher propertyEventPublisher;
 	
-	public TenantRequestApprovalServiceImplementation(PropertyEventPublisher propertyEventPublisher) {
+	public UpdatePropertiesAfterTenantRequestApprovalServiceImplementation(PropertyEventPublisher propertyEventPublisher) {
 		this.propertyEventPublisher = propertyEventPublisher;
 	}
 	

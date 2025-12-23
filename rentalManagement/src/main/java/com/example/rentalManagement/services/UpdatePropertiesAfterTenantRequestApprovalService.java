@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import com.example.rentalManagement.services.publishers.PropertyEventPublisher;
 
 @Service
-public interface TenantRequestApprovalService {
+public interface UpdatePropertiesAfterTenantRequestApprovalService {
 
     
 //    private PropertyEventPublisher propertyEventPublisher;

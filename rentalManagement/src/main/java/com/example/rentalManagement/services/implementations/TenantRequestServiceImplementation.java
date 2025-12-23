@@ -3,6 +3,7 @@ package com.example.rentalManagement.services.implementations;
 import java.util.List;
 
 
+
 import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
@@ -24,8 +25,8 @@ import com.example.rentalManagement.repositories.TenantRequestRepository;
 import com.example.rentalManagement.repositories.UserRepository;
 import com.example.rentalManagement.services.ActiveRentalService;
 import com.example.rentalManagement.services.PropertyService;
-import com.example.rentalManagement.services.TenantRequestApprovalService;
 import com.example.rentalManagement.services.TenantRequestService;
+import com.example.rentalManagement.services.UpdatePropertiesAfterTenantRequestApprovalService;
 import com.example.rentalManagement.services.UserService;
 
 @Service
@@ -34,16 +35,23 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 	private TenantRequestRepository tenantRequestRepository;
 	private PropertyRepository propertyRepository;
 	private UserRepository userRepository;
-	private TenantRequestApprovalService tenantRequestApprovalService;
+	private UpdatePropertiesAfterTenantRequestApprovalService updatePropertiesAftertenantRequestApprovalService;
 	private ActiveRentalService activeRentalService;
 	private UserService userService;
 	private PropertyService propertyService;
-	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository,PropertyRepository propertyRepository,ActiveRentalService activeRentalService,UserRepository userRepository,TenantRequestApprovalService tenantRequestApprovalService,UserService userService,PropertyService propertyService) {
+	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository
+			,PropertyRepository propertyRepository
+			,ActiveRentalService activeRentalService
+			,UserRepository userRepository
+			,UpdatePropertiesAfterTenantRequestApprovalService updatePropertiesAftertenantRequestApprovalService
+			,UserService userService,PropertyService propertyService) 
+	
+	{
 		this.tenantRequestRepository = tenantRequestRepository;
 		this.propertyRepository = propertyRepository;
 		this.activeRentalService = activeRentalService;
 		this.userRepository = userRepository;
-		this.tenantRequestApprovalService = tenantRequestApprovalService;
+		this.updatePropertiesAftertenantRequestApprovalService = updatePropertiesAftertenantRequestApprovalService;
 		this.userService = userService;
 		this.propertyService = propertyService;
 	}
@@ -87,7 +95,7 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		
 		
 		
-		this.tenantRequestApprovalService.approveTenantRequest(requestId);
+		this.updatePropertiesAftertenantRequestApprovalService.approveTenantRequest(requestId);
 		
 	}
 
