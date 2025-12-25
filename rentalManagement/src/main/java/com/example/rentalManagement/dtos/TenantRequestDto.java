@@ -1,6 +1,8 @@
 package com.example.rentalManagement.dtos;
 
 
+import java.time.LocalDateTime;
+
 import com.example.rentalManagement.entities.TenantRequest.Status;
 
 public class TenantRequestDto {
@@ -9,6 +11,8 @@ public class TenantRequestDto {
     private Long tenantId;
     private String message;
     private Status status;
+    private LocalDateTime requestedAt;
+    
 	public Long getRequestId() {
 		return requestId;
 	}
@@ -38,6 +42,12 @@ public class TenantRequestDto {
 	}
 	public void setStatus(Status status) {
 		this.status = status;
+	}
+	public LocalDateTime getRequestedAt() {
+		return requestedAt;
+	}
+	public void setRequestedAt(LocalDateTime requestedAt) {
+		this.requestedAt = requestedAt;
 	}
     
     

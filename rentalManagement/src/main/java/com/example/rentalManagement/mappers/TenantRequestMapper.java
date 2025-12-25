@@ -15,6 +15,7 @@ public class TenantRequestMapper {
         dto.setTenantId(req.getTenant().getUserId());
         dto.setMessage(req.getMessage());
         dto.setStatus(req.getStatus());
+        dto.setRequestedAt(req.getRequestedAt());
         return dto;
     }
 

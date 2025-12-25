@@ -28,6 +28,7 @@ import com.example.rentalManagement.services.PropertyService;
 import com.example.rentalManagement.services.TenantRequestService;
 import com.example.rentalManagement.services.UpdatePropertiesAfterTenantRequestApprovalService;
 import com.example.rentalManagement.services.UserService;
+import com.example.rentalManagement.services.publishers.PropertyEventPublisher;
 
 @Service
 public class TenantRequestServiceImplementation implements TenantRequestService{
@@ -39,12 +40,15 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 	private ActiveRentalService activeRentalService;
 	private UserService userService;
 	private PropertyService propertyService;
+	private PropertyEventPublisher propertyEventPublisher;
+	
 	public TenantRequestServiceImplementation(TenantRequestRepository tenantRequestRepository
 			,PropertyRepository propertyRepository
 			,ActiveRentalService activeRentalService
 			,UserRepository userRepository
 			,UpdatePropertiesAfterTenantRequestApprovalService updatePropertiesAftertenantRequestApprovalService
-			,UserService userService,PropertyService propertyService) 
+			,UserService userService,PropertyService propertyService
+			,PropertyEventPublisher propertyEventPublisher) 
 	
 	{
 		this.tenantRequestRepository = tenantRequestRepository;
@@ -54,12 +58,13 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		this.updatePropertiesAftertenantRequestApprovalService = updatePropertiesAftertenantRequestApprovalService;
 		this.userService = userService;
 		this.propertyService = propertyService;
+		this.propertyEventPublisher = propertyEventPublisher;
 	}
 	
 	@Override
 	public List<TenantRequestDto> getRequestsByOwnerId(Long id) {
 		// TODO Auto-generated method stub
-		List<TenantRequest> requests = this.tenantRequestRepository.findByPropertyOwnerUserId(id);
+		List<TenantRequest> requests = this.tenantRequestRepository.findByPropertyOwnerUserIdOrderByRequestedAtDesc(id);
 		List<TenantRequestDto> requestDtos = requests.stream()
 				.map(TenantRequestMapper::toDto)
 				.collect(Collectors.toList());
@@ -130,6 +135,7 @@ public class TenantRequestServiceImplementation implements TenantRequestService{
 		TenantRequest tenantRequest = TenantRequestRequestDtoToTenantRequest.toTenantRequest(message, property, tenant);
 		
 		TenantRequest savedTenantRequest = this.tenantRequestRepository.save(tenantRequest);
+		
 		
 		return TenantRequestMapper.toDto(savedTenantRequest);
 	}
