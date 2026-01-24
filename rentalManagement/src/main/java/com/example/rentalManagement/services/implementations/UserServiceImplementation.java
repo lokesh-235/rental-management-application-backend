@@ -4,8 +4,10 @@ import org.springframework.stereotype.Service;
 
 import com.example.rentalManagement.dtos.LoginRequestDto;
 import com.example.rentalManagement.dtos.LoginResponseDto;
+import com.example.rentalManagement.dtos.SignupRequestDto;
 import com.example.rentalManagement.dtos.UserDto;
 import com.example.rentalManagement.entities.User;
+import com.example.rentalManagement.mappers.SignupRequestDtoToUserMapper;
 import com.example.rentalManagement.mappers.UserMapper;
 import com.example.rentalManagement.mappers.UserToLoginResponseMapper;
 import com.example.rentalManagement.repositories.UserRepository;
@@ -41,6 +43,20 @@ public class UserServiceImplementation implements UserService{
 		User user = this.userRepository.findById(userId).orElseThrow(()->new RuntimeException("User does not exist..."));
 		
 		return UserMapper.toDto(user);
+	}
+
+	@Override
+	public String addUser(SignupRequestDto signupRequestDto) {
+		// TODO Auto-generated method stub
+		User user = SignupRequestDtoToUserMapper.toUser(signupRequestDto);
+		
+		User savedUser = this.userRepository.save(user);
+		
+		
+		
+		return "sign up successful";
+		
+		
 	}
 	
 	
