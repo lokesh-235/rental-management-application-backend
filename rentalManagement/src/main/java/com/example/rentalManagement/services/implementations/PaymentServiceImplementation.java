@@ -1,13 +1,18 @@
 package com.example.rentalManagement.services.implementations;
 
+import java.util.List;
+import java.util.stream.Stream;
+
 import org.springframework.stereotype.Service;
 
 import com.example.rentalManagement.dtos.ActiveRentalDto;
+import com.example.rentalManagement.dtos.OwnerPaymentsDto;
 import com.example.rentalManagement.dtos.PaymentRequestDto;
 import com.example.rentalManagement.dtos.PaymentResponseDto;
 import com.example.rentalManagement.entities.ActiveRental;
 import com.example.rentalManagement.entities.Payment;
 import com.example.rentalManagement.mappers.PaymentRequestToPaymentMapper;
+import com.example.rentalManagement.mappers.PaymentToOwnerPaymentsDtoMapper;
 import com.example.rentalManagement.mappers.PaymentToPaymentResponseMapper;
 import com.example.rentalManagement.repositories.ActiveRentalRepository;
 import com.example.rentalManagement.repositories.PaymentRepository;
@@ -54,6 +59,18 @@ public class PaymentServiceImplementation implements PaymentService {
 		
 		return PaymentToPaymentResponseMapper.toPaymentResponse(savedPayment ,ownerName , propertyTitle );
 		
+	}
+
+	@Override
+	public List<OwnerPaymentsDto> getPaymentsByOwnerId(Long ownerId) {
+		// TODO Auto-generated method stub
+		List<Payment> payments = this.paymentRepository.findByRentalPropertyOwnerUserId(ownerId);
+		
+		Stream<Payment> stream = payments.stream();
+		
+		List<OwnerPaymentsDto> ownerPaymentsDtos = stream.map(PaymentToOwnerPaymentsDtoMapper::toOwnerPaymentsDto).toList();
+		
+		return ownerPaymentsDtos;
 	}
 	
 }
