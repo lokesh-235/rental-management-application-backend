@@ -40,73 +40,78 @@ The project follows a **layered architecture** with proper separation of concern
 
 ## 🏗️ Project Structure
 
-* [com.example.rentalManagement](./rentalManagement)
+* [rentalManagement](./rentalManagement)
 
-  * [config](./rentalManagement/config)
-    * [CorsConfig.java](./rentalManagement/config/CorsConfig.java)
-    * [WebConfig.java](./rentalManagement/config/WebConfig.java)
-    * [WebSocketConfig.java](./rentalManagement/config/WebSocketConfig.java)
+  * [src](./rentalManagement/src)
+    * [main](./rentalManagement/src/main)
+      * [java](./rentalManagement/src/main/java)
+        * [com](./rentalManagement/src/main/java/com)
+          * [example](./rentalManagement/src/main/java/com/example)
+            * [rentalManagement](./rentalManagement/src/main/java/com/example/rentalManagement)
 
-  * [controllers](./rentalManagement/controllers)
-    * [UserController.java](./rentalManagement/controllers/UserController.java)
-    * [SignupController.java](./rentalManagement/controllers/SignupController.java)
-    * [LoginController.java](./rentalManagement/controllers/LoginController.java)
-    * [PropertyController.java](./rentalManagement/controllers/PropertyController.java)
-    * [PropertyImageController.java](./rentalManagement/controllers/PropertyImageController.java)
-    * [TenantRequestController.java](./rentalManagement/controllers/TenantRequestController.java)
-    * [TenantActiveRentalController.java](./rentalManagement/controllers/TenantActiveRentalController.java)
-    * [OwnerPaymentsController.java](./rentalManagement/controllers/OwnerPaymentsController.java)
-    * [PaymentController.java](./rentalManagement/controllers/PaymentController.java)
-    * [ActiveRentalController.java](./rentalManagement/controllers/ActiveRentalController.java)
-    * [SearchPropertiesController.java](./rentalManagement/controllers/SearchPropertiesController.java)
+              * [configurations](./rentalManagement/src/main/java/com/example/rentalManagement/configurations)
+                * CorsConfig.java
+                * WebConfig.java
+                * WebSocketConfig.java
 
-  * [dtos](./rentalManagement/dtos)
-    * SignupRequestDto.java
-    * LoginRequestDto.java
-    * LoginResponseDto.java
-    * PropertyDto.java
-    * PaymentDto.java
-    * ReviewDto.java
-    * Other DTOs...
+              * [controllers](./rentalManagement/src/main/java/com/example/rentalManagement/controllers)
+                * UserController.java
+                * SignupController.java
+                * LoginController.java
+                * PropertyController.java
+                * PropertyImageController.java
+                * TenantRequestController.java
+                * TenantActiveRentalController.java
+                * OwnerPaymentsController.java
+                * PaymentController.java
+                * ActiveRentalController.java
+                * SearchPropertiesController.java
 
-  * [entities](./rentalManagement/entities)
-    * User.java
-    * Property.java
-    * PropertyImage.java
-    * Payment.java
-    * Review.java
-    * TenantRequest.java
-    * ActiveRental.java
-    * SavedProperty.java
+              * [dtos](./rentalManagement/src/main/java/com/example/rentalManagement/dtos)
+                * SignupRequestDto.java
+                * LoginRequestDto.java
+                * LoginResponseDto.java
+                * PropertyDto.java
+                * PaymentDto.java
+                * ReviewDto.java
 
-  * [mappers](./rentalManagement/mappers)
-    * UserMapper.java
-    * PropertyMapper.java
-    * PaymentMapper.java
+              * [entities](./rentalManagement/src/main/java/com/example/rentalManagement/entities)
+                * User.java
+                * Property.java
+                * PropertyImage.java
+                * Payment.java
+                * Review.java
+                * TenantRequest.java
+                * ActiveRental.java
+                * SavedProperty.java
 
-  * [repositories](./rentalManagement/repositories)
-    * UserRepository.java
-    * PropertyRepository.java
-    * PaymentRepository.java
-    * ReviewRepository.java
-    * TenantRequestRepository.java
-    * ActiveRentalRepository.java
+              * [mappers](./rentalManagement/src/main/java/com/example/rentalManagement/mappers)
+                * UserMapper.java
+                * PropertyMapper.java
+                * PaymentMapper.java
 
-  * [services](./rentalManagement/services)
-    * UserService.java
-    * PropertyService.java
-    * PaymentService.java
-    * TenantRequestService.java
-    * ActiveRentalService.java
+              * [repositories](./rentalManagement/src/main/java/com/example/rentalManagement/repositories)
+                * UserRepository.java
+                * PropertyRepository.java
+                * PaymentRepository.java
+                * ReviewRepository.java
+                * TenantRequestRepository.java
+                * ActiveRentalRepository.java
 
-  * [services.implementations](./rentalManagement/services/implementations)
-    * UserServiceImplementation.java
-    * PropertyServiceImplementation.java
-    * PaymentServiceImplementation.java
+              * [services](./rentalManagement/src/main/java/com/example/rentalManagement/services)
+                * UserService.java
+                * PropertyService.java
+                * PaymentService.java
+                * TenantRequestService.java
+                * ActiveRentalService.java
 
-  * [services.publishers](./rentalManagement/services/publishers)
-    * PropertyEventPublisher.java
+              * [services/implementations](./rentalManagement/src/main/java/com/example/rentalManagement/services/implementations)
+                * UserServiceImplementation.java
+                * PropertyServiceImplementation.java
+                * PaymentServiceImplementation.java
 
+              * [services/publishers](./rentalManagement/src/main/java/com/example/rentalManagement/services/publishers)
+                * PropertyEventPublisher.java
 
 ---
 
