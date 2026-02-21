@@ -40,72 +40,15 @@ The project follows a **layered architecture** with proper separation of concern
 
 ## 🏗️ Project Structure
 
-com.example.rentalManagement
-|
-+-- config
-|   +-- CorsConfig.java
-|   +-- WebConfig.java
-|   +-- WebSocketConfig.java
-|
-+-- controllers
-|   +-- UserController.java
-|   +-- SignupController.java
-|   +-- LoginController.java
-|   +-- PropertyController.java
-|   +-- PropertyImageController.java
-|   +-- TenantRequestController.java
-|   +-- TenantActiveRentalController.java
-|   +-- OwnerPaymentsController.java
-|   +-- PaymentController.java
-|   +-- ActiveRentalController.java
-|   +-- SearchPropertiesController.java
-|
-+-- dtos
-|   +-- SignupRequestDto.java
-|   +-- LoginRequestDto.java
-|   +-- LoginResponseDto.java
-|   +-- PropertyDto.java
-|   +-- PaymentDto.java
-|   +-- ReviewDto.java
-|   +-- Other DTOs
-|
-+-- entities
-|   +-- User.java
-|   +-- Property.java
-|   +-- PropertyImage.java
-|   +-- Payment.java
-|   +-- Review.java
-|   +-- TenantRequest.java
-|   +-- ActiveRental.java
-|   +-- SavedProperty.java
-|
-+-- mappers
-|   +-- UserMapper.java
-|   +-- PropertyMapper.java
-|   +-- PaymentMapper.java
-|
-+-- repositories
-|   +-- UserRepository.java
-|   +-- PropertyRepository.java
-|   +-- PaymentRepository.java
-|   +-- ReviewRepository.java
-|   +-- TenantRequestRepository.java
-|   +-- ActiveRentalRepository.java
-|
-+-- services
-|   +-- UserService.java
-|   +-- PropertyService.java
-|   +-- PaymentService.java
-|   +-- TenantRequestService.java
-|   +-- ActiveRentalService.java
-|
-+-- services.implementations
-|   +-- UserServiceImplementation.java
-|   +-- PropertyServiceImplementation.java
-|   +-- PaymentServiceImplementation.java
-|
-+-- services.publishers
-    +-- PropertyEventPublisher.java
+├── dir1
+│   ├── file11.ext
+│   └── file12.ext
+├── dir2
+│   ├── file21.ext
+│   ├── file22.ext
+│   └── file23.ext
+├── dir3
+├── file_in_root.ext
 
 
 ---
