@@ -42,25 +42,25 @@ The project follows a **layered architecture** with proper separation of concern
 
 * [com.example.rentalManagement](./rentalManagement)
 
-  * [config](./src/main/java/com/example/rentalManagement/config)
-    * [CorsConfig.java](./src/main/java/com/example/rentalManagement/config/CorsConfig.java)
-    * [WebConfig.java](./src/main/java/com/example/rentalManagement/config/WebConfig.java)
-    * [WebSocketConfig.java](./src/main/java/com/example/rentalManagement/config/WebSocketConfig.java)
+  * [config](./rentalManagement/config)
+    * [CorsConfig.java](./rentalManagement/config/CorsConfig.java)
+    * [WebConfig.java](./rentalManagement/config/WebConfig.java)
+    * [WebSocketConfig.java](./rentalManagement/config/WebSocketConfig.java)
 
-  * [controllers](./src/main/java/com/example/rentalManagement/controllers)
-    * [UserController.java](./src/main/java/com/example/rentalManagement/controllers/UserController.java)
-    * [SignupController.java](./src/main/java/com/example/rentalManagement/controllers/SignupController.java)
-    * [LoginController.java](./src/main/java/com/example/rentalManagement/controllers/LoginController.java)
-    * [PropertyController.java](./src/main/java/com/example/rentalManagement/controllers/PropertyController.java)
-    * [PropertyImageController.java](./src/main/java/com/example/rentalManagement/controllers/PropertyImageController.java)
-    * [TenantRequestController.java](./src/main/java/com/example/rentalManagement/controllers/TenantRequestController.java)
-    * [TenantActiveRentalController.java](./src/main/java/com/example/rentalManagement/controllers/TenantActiveRentalController.java)
-    * [OwnerPaymentsController.java](./src/main/java/com/example/rentalManagement/controllers/OwnerPaymentsController.java)
-    * [PaymentController.java](./src/main/java/com/example/rentalManagement/controllers/PaymentController.java)
-    * [ActiveRentalController.java](./src/main/java/com/example/rentalManagement/controllers/ActiveRentalController.java)
-    * [SearchPropertiesController.java](./src/main/java/com/example/rentalManagement/controllers/SearchPropertiesController.java)
+  * [controllers](./rentalManagement/controllers)
+    * [UserController.java](./rentalManagement/controllers/UserController.java)
+    * [SignupController.java](./rentalManagement/controllers/SignupController.java)
+    * [LoginController.java](./rentalManagement/controllers/LoginController.java)
+    * [PropertyController.java](./rentalManagement/controllers/PropertyController.java)
+    * [PropertyImageController.java](./rentalManagement/controllers/PropertyImageController.java)
+    * [TenantRequestController.java](./rentalManagement/controllers/TenantRequestController.java)
+    * [TenantActiveRentalController.java](./rentalManagement/controllers/TenantActiveRentalController.java)
+    * [OwnerPaymentsController.java](./rentalManagement/controllers/OwnerPaymentsController.java)
+    * [PaymentController.java](./rentalManagement/controllers/PaymentController.java)
+    * [ActiveRentalController.java](./rentalManagement/controllers/ActiveRentalController.java)
+    * [SearchPropertiesController.java](./rentalManagement/controllers/SearchPropertiesController.java)
 
-  * [dtos](./src/main/java/com/example/rentalManagement/dtos)
+  * [dtos](./rentalManagement/dtos)
     * SignupRequestDto.java
     * LoginRequestDto.java
     * LoginResponseDto.java
@@ -69,7 +69,7 @@ The project follows a **layered architecture** with proper separation of concern
     * ReviewDto.java
     * Other DTOs...
 
-  * [entities](./src/main/java/com/example/rentalManagement/entities)
+  * [entities](./rentalManagement/entities)
     * User.java
     * Property.java
     * PropertyImage.java
@@ -79,12 +79,12 @@ The project follows a **layered architecture** with proper separation of concern
     * ActiveRental.java
     * SavedProperty.java
 
-  * [mappers](./src/main/java/com/example/rentalManagement/mappers)
+  * [mappers](./rentalManagement/mappers)
     * UserMapper.java
     * PropertyMapper.java
     * PaymentMapper.java
 
-  * [repositories](./src/main/java/com/example/rentalManagement/repositories)
+  * [repositories](./rentalManagement/repositories)
     * UserRepository.java
     * PropertyRepository.java
     * PaymentRepository.java
@@ -92,19 +92,19 @@ The project follows a **layered architecture** with proper separation of concern
     * TenantRequestRepository.java
     * ActiveRentalRepository.java
 
-  * [services](./src/main/java/com/example/rentalManagement/services)
+  * [services](./rentalManagement/services)
     * UserService.java
     * PropertyService.java
     * PaymentService.java
     * TenantRequestService.java
     * ActiveRentalService.java
 
-  * [services.implementations](./src/main/java/com/example/rentalManagement/services/implementations)
+  * [services.implementations](./rentalManagement/services/implementations)
     * UserServiceImplementation.java
     * PropertyServiceImplementation.java
     * PaymentServiceImplementation.java
 
-  * [services.publishers](./src/main/java/com/example/rentalManagement/services/publishers)
+  * [services.publishers](./rentalManagement/services/publishers)
     * PropertyEventPublisher.java
 
 
