@@ -43,71 +43,71 @@ The project follows a **layered architecture** with proper separation of concern
 com.example.rentalManagement
 │
 ├── config
-│ ├── CorsConfig.java
-│ ├── WebConfig.java
-│ └── WebSocketConfig.java
+│   ├── CorsConfig.java
+│   ├── WebConfig.java
+│   └── WebSocketConfig.java
 │
 ├── controllers
-│ ├── UserController.java
-│ ├── SignupController.java
-│ ├── LoginController.java
-│ ├── PropertyController.java
-│ ├── PropertyImageController.java
-│ ├── TenantRequestController.java
-│ ├── TenantActiveRentalController.java
-│ ├── OwnerPaymentsController.java
-│ ├── PaymentController.java
-│ ├── ActiveRentalController.java
-│ └── SearchPropertiesController.java
+│   ├── UserController.java
+│   ├── SignupController.java
+│   ├── LoginController.java
+│   ├── PropertyController.java
+│   ├── PropertyImageController.java
+│   ├── TenantRequestController.java
+│   ├── TenantActiveRentalController.java
+│   ├── OwnerPaymentsController.java
+│   ├── PaymentController.java
+│   ├── ActiveRentalController.java
+│   └── SearchPropertiesController.java
 │
 ├── dtos
-│ ├── SignupRequestDto.java
-│ ├── LoginRequestDto.java
-│ ├── LoginResponseDto.java
-│ ├── PropertyDto.java
-│ ├── PaymentDto.java
-│ ├── ReviewDto.java
-│ └── ... (Other request & response DTOs)
+│   ├── SignupRequestDto.java
+│   ├── LoginRequestDto.java
+│   ├── LoginResponseDto.java
+│   ├── PropertyDto.java
+│   ├── PaymentDto.java
+│   ├── ReviewDto.java
+│   └── ... (Other request & response DTOs)
 │
 ├── entities
-│ ├── User.java
-│ ├── Property.java
-│ ├── PropertyImage.java
-│ ├── Payment.java
-│ ├── Review.java
-│ ├── TenantRequest.java
-│ ├── ActiveRental.java
-│ └── SavedProperty.java
+│   ├── User.java
+│   ├── Property.java
+│   ├── PropertyImage.java
+│   ├── Payment.java
+│   ├── Review.java
+│   ├── TenantRequest.java
+│   ├── ActiveRental.java
+│   └── SavedProperty.java
 │
 ├── mappers
-│ ├── UserMapper.java
-│ ├── PropertyMapper.java
-│ ├── PaymentMapper.java
-│ └── ... (DTO ↔ Entity converters)
+│   ├── UserMapper.java
+│   ├── PropertyMapper.java
+│   ├── PaymentMapper.java
+│   └── ... (DTO ↔ Entity converters)
 │
 ├── repositories
-│ ├── UserRepository.java
-│ ├── PropertyRepository.java
-│ ├── PaymentRepository.java
-│ ├── ReviewRepository.java
-│ ├── TenantRequestRepository.java
-│ └── ActiveRentalRepository.java
+│   ├── UserRepository.java
+│   ├── PropertyRepository.java
+│   ├── PaymentRepository.java
+│   ├── ReviewRepository.java
+│   ├── TenantRequestRepository.java
+│   └── ActiveRentalRepository.java
 │
 ├── services
-│ ├── UserService.java
-│ ├── PropertyService.java
-│ ├── PaymentService.java
-│ ├── TenantRequestService.java
-│ └── ActiveRentalService.java
+│   ├── UserService.java
+│   ├── PropertyService.java
+│   ├── PaymentService.java
+│   ├── TenantRequestService.java
+│   └── ActiveRentalService.java
 │
 ├── services.implementations
-│ ├── UserServiceImplementation.java
-│ ├── PropertyServiceImplementation.java
-│ ├── PaymentServiceImplementation.java
-│ └── ...
+│   ├── UserServiceImplementation.java
+│   ├── PropertyServiceImplementation.java
+│   ├── PaymentServiceImplementation.java
+│   └── ...
 │
 └── services.publishers
-└── PropertyEventPublisher.java
+    └── PropertyEventPublisher.java
 
 
 ---
