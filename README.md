@@ -40,7 +40,7 @@ The project follows a **layered architecture** with proper separation of concern
 
 ## 🏗️ Project Structure
 
-* [com.example.rentalManagement](./src/main/java/com/example/rentalManagement)
+* [com.example.rentalManagement](./rentalManagement)
 
   * [config](./src/main/java/com/example/rentalManagement/config)
     * [CorsConfig.java](./src/main/java/com/example/rentalManagement/config/CorsConfig.java)
